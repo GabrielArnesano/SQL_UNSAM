@@ -1,0 +1,9 @@
+{
+    "server_connection":
+    {
+        "server": "",
+        "user": "",
+        "password": "",
+        "database": "sales"
+    }
+}
