@@ -1,3 +1,4 @@
+if not exists (select * from sys.tables where name = 'fact_sales')
 create table fact_sales(
     date date not null,
     time time not null,

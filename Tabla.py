@@ -19,3 +19,12 @@ class Tabla():
             sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
             cursor.execute(sql, tuple(row))
         cursor.commit()
+
+    def export_autoincrement_to_sql(self, cursor, table_name, max_date):
+        data = self.data[self.data['date'] >= max_date]
+        for index, row in data.iterrows():
+            placeholders = ', '.join(['?'] * len(row))
+            columns = ', '.join(row.keys())
+            sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
+            cursor.execute(sql, tuple(row))
+        cursor.commit()
