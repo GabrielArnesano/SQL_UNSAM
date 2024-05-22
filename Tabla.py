@@ -21,7 +21,10 @@ class Tabla():
         cursor.commit()
 
     def export_autoincrement_to_sql(self, cursor, table_name, max_date):
-        data = self.data[self.data['date'] >= max_date]
+        if max_date is not None:
+            data = self.data[self.data['date'] >= max_date]
+        else:
+            data = self.data
         for index, row in data.iterrows():
             placeholders = ', '.join(['?'] * len(row))
             columns = ', '.join(row.keys())
